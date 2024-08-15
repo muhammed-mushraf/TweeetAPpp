@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Tweet Detail
+{% endblock %}
+
+{% block content %}
+<div class="main-container">
+    <div class="container-2">
+        <div class="tweet-detail-container">
+            <div class="dropdown">
+                <h2>{{ tweet.user.username }}</h2>
+                <a href="#" class="dropdown-toggle ms-auto">
+                    <i class="fa-solid fa-ellipsis-vertical fa-2x"></i>
+                </a>
+                <!-- Dropdown Menu -->
+                <div class="dropdown-menu">
+                    {% if tweet.user == user %}
+                    <a href="{% url 'tweet_edit' tweet.id %}" class="dropdown-item">Edit</a>
+                    <a href="{% url 'tweet_delete' tweet.id %}" class="dropdown-item">Delete</a>
+                    {% else %}
+                    <a href="#" class="dropdown-item">Report</a>
+                    <a href="#" class="dropdown-item">Not Interested</a>
+                    {% endif %}
+                </div>
+            </div>
+            <p>{{ tweet.text }}</p>
+            {% if tweet.photo %}
+            <img src="{{ tweet.photo.url }}" alt="Tweet image" class="img-fluid">
+            {% endif %}
+            <p>Likes: {{ tweet.like_count }}</p>
+        </div>
+        <div class="card-footer">
+            <!-- Like Button with Icon -->
+            <div class="text-center">
+                <a href="#" class="like-btn"
+                    data-liked="{% if user in tweet.like_set.all %}true{% else %}false{% endif %}"
+                    data-tweet-id="{{ tweet.id }}">
+                    <i
+                        class="{% if user in tweet.like_set.all %}fa-solid{% else %}fa-regular{% endif %} fa-heart fa-2x"></i>
+                </a>
+                <span class="like-count d-block">{{ tweet.like_count }}</span>
+            </div>
+            <a href="#" id="comment-icon">
+                <i class="fa-regular fa-comment fa-2x"></i>
+            </a>
+
+            <!-- Share Button with Share Icon -->
+            <a href="#">
+                <i class="fas fa-share fa-2x"></i>
+            </a>
+        </div>
+        <div id="text-box" class="hidden">
+            <textarea id="text-area" rows="4" cols="50" placeholder="Type your message here..."></textarea>
+        </div>
+        <input type="hidden" id="tweet-id" value="{{ tweet.id }}">
+    </div>
+
+    <div class="container-3">
+        <div>
+            <div id="comment-list">
+                <!-- Display existing comments -->
+                {% for comment in comments %}
+                <div class="comment-item">
+                    <div class="comment-avatar">
+                        <a href="{% url 'profile' comment.user.username %}">
+                            <img src="{{ comment.user.profile.avatar.url }}" alt="{{ comment.user.username }}"
+                                class="rounded-circle">
+                        </a>
+                    </div>
+                    <div class="comment-text">
+                        <p><strong>{{ comment.user.username }}:</strong> {{ comment.text }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

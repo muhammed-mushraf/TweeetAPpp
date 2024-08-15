@@ -1,0 +1,113 @@
+.card-footer {
+    display: flex;
+    justify-content: left; 
+    gap: 15px; 
+}
+
+.card-footer i {
+    font-size: 24px;
+}
+
+.equal-img {
+    width: 100%;  /* Full width of the card */
+    height: 200px; /* Fixed height */
+    object-fit: cover; /* Ensures the image covers the given area, cropping if necessary */
+}
+
+/* Ensure the ellipsis icon is aligned to the right */
+.mb-0{
+    color: aliceblue;
+}
+/* Add this CSS to your main.css or relevant stylesheet */
+.dropdown {
+    display: flex;
+    justify-content: end;
+
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    background: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 8px 16px;
+    color: black;
+    background-color: white;
+    text-decoration: none;
+}
+
+.dropdown-item:hover {
+    background: #28323a;
+}
+.dropdown-toggle::after {
+    display: none;
+}
+.card-footer .dropdown {
+    margin-left: auto; /* Push the dropdown to the right */
+}
+.container-2{
+    margin-top: 20px;
+    margin-right: 10px;
+    width: 60%;
+    height: 600px;
+}
+.container-3{
+    margin-top: 20px;
+    width: 40%;
+    margin-left: auto;
+}
+
+.main-container {
+    display: flex;
+    justify-content: space-between; 
+}
+#text-box {
+    margin-top: 10px;
+}
+
+.hidden {
+    display: none;
+}
+/* Ensure the comment list displays comments in a vertical list */
+#comment-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.comment-item {
+    display: flex;
+    align-items: flex-start; /* Aligns items at the top */
+    margin-bottom: 10px; /* Spacing between comments */
+}
+
+.comment-avatar {
+    margin-right: 10px; /* Space between avatar and text */
+}
+
+.comment-avatar img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%; /* Ensures the avatar is circular */
+}
+
+.comment-text {
+    flex: 1; /* Allows the text to take the remaining space */
+}
+
+/* Optional: Add some styling to the comment text */
+.comment-text p {
+    margin: 0; /* Removes default paragraph margin */
+}

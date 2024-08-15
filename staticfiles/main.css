@@ -1,0 +1,15 @@
+body {
+    background-color: yellow;
+    color: white; /* Ensure text is readable on black background */
+}
+
+.card-footer {
+    background-color: white; /* or another color */
+    display: flex;
+    justify-content: center; 
+    gap: 15px; 
+}
+
+.card-footer i {
+    font-size: 24px;
+}

@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Chai aur tweet
+{% endblock %}
+
+{% block content %}
+<h1 class="text-center text-white mt-4">
+    Welcome {{ user.username }}
+</h1>
+
+<a class="btn btn-primary mb-4" href="{% url 'tweet_create' %}">Create new Tweet</a>
+<div class="container row gap-3">
+    {% for tweet in tweets %}
+    <div class="card" style="width: 25rem;">
+        <div class="card-header d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center">
+                <!-- User Avatar with Profile Link -->
+                <a href="{% url 'profile' tweet.user.username %}">
+                    <img src="{{ tweet.user.profile.avatar.url }}" alt="{{ tweet.user.username }}"
+                        class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;">
+                </a>
+
+                <!-- User Name with Profile Link -->
+                <a href="{% url 'profile' tweet.user.username %}" class="ms-2 text-decoration-none text-dark">
+                    <h6 class="mb-0">{{ tweet.user.username }}</h6>
+                </a>
+            </div>
+
+            <!-- Button on the right -->
+            <a href="#" class="btn btn-outline-primary">Follow</a>
+        </div>
+
+        <!-- Equal Size Image -->
+        <a href="{% url 'tweet_detail' tweet.id %}">
+            <img src="{{ tweet.photo.url }}" class="card-img-top equal-img" alt="...">
+        </a>
+
+        <div class="card-body">
+            <p class="card-text">{{ tweet.text }}</p>
+
+        </div>
+
+        <!-- Comment and Share Section -->
+
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
