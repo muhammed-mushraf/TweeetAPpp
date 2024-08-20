@@ -64,6 +64,7 @@ def tweet_create(request):
     context = {'form': form}
     return render(request, 'tweet_form.html', context)
 
+
 @login_required
 def tweet_edit(request, tweet_id):
     tweet = get_object_or_404(Tweet, pk=tweet_id, user=request.user)

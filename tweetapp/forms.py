@@ -25,5 +25,16 @@ class TweetForm(forms.ModelForm):
     class Meta:
         model = Tweet
         fields = ['text', 'photo']
+        widgets = {
+            'text': forms.Textarea(attrs={
+                'class': 'form-control',  # Bootstrap class for consistent styling
+                'rows': 3,  # Set the number of rows to 3
+                'placeholder': 'Write your tweet here...',
+            }),
+            'photo': forms.ClearableFileInput(attrs={
+                'class': 'form-control-file',
+            }),
+        }
+
 
 
